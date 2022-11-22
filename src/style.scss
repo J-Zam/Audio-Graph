@@ -1,7 +1,13 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .9rem;
 }
 
 .container {
@@ -25,13 +31,48 @@
     position: absolute;
     top: 1.5rem;
     left: .5rem;
-    width: 250px;
+    width: 15.60rem;
+    height: 2rem;
     display: block;
 }
 
-.fileupload { 
-    position: absolute;
-    top: 150px;
-    color: #fff;
-    z-index: 100;
+.inputWrapper {
+    position: relative;
+    margin-top: 4.5rem;
+    margin-left: .5rem;
+    // width: 15.60rem;
+    width: 10rem;
+    height: 2rem;
+    display: block;
+    overflow: hidden;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #43a12c;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #38c016;
+    }
+
+    p {
+        position: absolute;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+
+    }
+
+    .fileupload {
+        cursor: pointer;
+        z-index: 99;
+        font-size: 50px;
+        opacity: 0;
+        -moz-opacity: 0;
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    }
 }
