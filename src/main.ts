@@ -7,7 +7,9 @@ const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 const file = document.getElementById("fileupload") as HTMLInputElement;
 const loading = document.getElementById("loading") as HTMLElement;
 const audioPlayer = document.getElementById("audioPlayer") as HTMLAudioElement;
-const inputWrapper = document.getElementById("inputWrapper") as HTMLAudioElement;
+const inputWrapper = document.getElementById(
+  "inputWrapper"
+) as HTMLAudioElement;
 type fftSizeType = 32 | 64 | 128 | 256 | 512 | 1024 | 2048;
 const FFTSIZE: fftSizeType = 512;
 const lINEWIDTH = 2;
@@ -26,7 +28,10 @@ window.addEventListener("resize", () => {
 });
 
 audioPlayer.addEventListener("play", function () {
-  const audioContext = new AudioContext();
+  // @ts-ignore
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const audioContext = new AudioCtx();
+
   audioPlayer.play();
   audioSource = audioContext.createMediaElementSource(audioPlayer);
   analyser = audioContext.createAnalyser();
@@ -53,7 +58,10 @@ audioPlayer.addEventListener("play", function () {
 file.addEventListener("change", function () {
   const files = this.files as FileList;
   audioPlayer.src = URL.createObjectURL(files[0]);
-  const audioContext = new AudioContext();
+  // @ts-ignore
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const audioContext = new AudioCtx();
+
   audioPlayer.load();
   audioPlayer.play();
 
